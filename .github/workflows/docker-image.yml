@@ -39,14 +39,14 @@ jobs:
         
     - name: Build Docker Image
       env:
-        NEW_VERSION: ${{steps.version.outputs.version}}
+        NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
         docker build -t  marckbelt/docker-graphql:$NEW_VERSION .
         docker build -t  marckbelt/docker-graphql:latest .
    
     - name: "Push docker Image"
       env:
-         NEW_VERSION: ${{steps.version.outputs.version}}
+         NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
         docker push  marckbelt/docker-graphql:$NEW_VERSION
         docker push  marckbelt/docker-graphql:latest
